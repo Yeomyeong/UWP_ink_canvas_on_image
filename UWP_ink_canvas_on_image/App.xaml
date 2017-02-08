@@ -1,0 +1,8 @@
+﻿<Application
+    x:Class="UWP_ink_canvas_on_image.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_ink_canvas_on_image"
+    RequestedTheme="Light">
+
+</Application>

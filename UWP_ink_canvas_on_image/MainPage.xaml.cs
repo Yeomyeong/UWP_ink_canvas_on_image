@@ -34,7 +34,7 @@ namespace UWP_ink_canvas_on_image
         public MainPage()
         {
             this.InitializeComponent();
-            ink.InkPresenter.InputDeviceTypes = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch;
+            ink.InkPresenter.InputDeviceTypes = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch | CoreInputDeviceTypes.Pen;
             firstImageWidth = (float)image.ActualWidth;
             firstImageHeight = (float)image.ActualHeight;
             imageWidth = (int)image.ActualWidth;

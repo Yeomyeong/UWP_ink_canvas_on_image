@@ -104,6 +104,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="scenario.md" />
     <None Include="UWP_ink_canvas_on_image_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

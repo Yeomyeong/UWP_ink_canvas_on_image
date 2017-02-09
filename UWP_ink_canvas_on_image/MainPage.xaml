@@ -7,14 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <ScrollViewer>
+    <ScrollViewer  SizeChanged="App_SizeChanged">
         <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <Grid>
-                <Image Source="/Assets/sample.jpg"></Image>
+                <Image x:Name="image" Source="/Assets/sample.jpg"></Image>
                 <InkCanvas x:Name="ink"></InkCanvas>
                 <InkToolbar x:Name="inkToolbar"
-          VerticalAlignment="Top"
-          TargetInkCanvas="{x:Bind ink}" />
+                  VerticalAlignment="Top"
+                  TargetInkCanvas="{x:Bind ink}" />
             </Grid>
             <Button Content="Save"
                 Width="100"

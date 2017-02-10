@@ -21,6 +21,8 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Media.Capture;
 using System.Numerics;
 using Windows.UI.Input.Inking;
+using System.Threading.Tasks;
+using Windows.Storage.Streams;
 
 namespace UWP_ink_canvas_on_image
 {
@@ -35,14 +37,13 @@ namespace UWP_ink_canvas_on_image
         {
             this.InitializeComponent();
             ink.InkPresenter.InputDeviceTypes = CoreInputDeviceTypes.Mouse | CoreInputDeviceTypes.Touch | CoreInputDeviceTypes.Pen;
-            firstImageWidth = (float)image.ActualWidth;
-            firstImageHeight = (float)image.ActualHeight;
-            imageWidth = (int)image.ActualWidth;
-            imageHeight = (int)image.ActualHeight;
+            setFirstImageSize();
+            refreshImageSize();
         }
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            refreshImageSize();
             // grab output file
             StorageFolder storageFolder = KnownFolders.SavedPictures;
             var file = await storageFolder.CreateFileAsync("output.jpg", CreationCollisionOption.ReplaceExisting);
@@ -60,7 +61,6 @@ namespace UWP_ink_canvas_on_image
             {
                 ds.Clear(Colors.White);
                 var image = await CanvasBitmap.LoadAsync(device, inputFile.Path);
-                
                 // draw your image first
                 ds.DrawImage(image, new Rect(new Point(0,0), new Point(imageWidth, imageHeight))); //Rect
                 // then draw contents of your ink canvas over it
@@ -77,8 +77,7 @@ namespace UWP_ink_canvas_on_image
         private void App_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             setFirstImageSize();
-            imageWidth = (int)image.ActualWidth;
-            imageHeight = (int)image.ActualHeight;
+            refreshImageSize();
 
             if (firstImageWidth > 0 && firstImageHeight > 0)
             {
@@ -107,5 +106,11 @@ namespace UWP_ink_canvas_on_image
                 firstImageHeight = (int)image.ActualHeight;
 
         }
+
+        private void refreshImageSize ()
+        {
+            imageWidth = (int)image.ActualWidth;
+            imageHeight = (int)image.ActualHeight;
+        }        
     }
 }
